@@ -13,8 +13,9 @@ class NovoQuestionario extends Component {
         super(props)
 
         this.state = {
+            pergunta: "",
             alternativa: [],
-            perguntas: []
+            redirect: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.saveQuestionario = this.saveQuestionario.bind(this)
@@ -23,23 +24,19 @@ class NovoQuestionario extends Component {
 
     saveQuestionario() {
         const newQuestionario = {
-            enunciado: this.state.perguntas,
+            enunciado: this.refs.enunciado.value,
             alternativas: this.state.alternativa
         }
         api.saveQuestionario(newQuestionario)
             .then((res) => {
                 console.log(res)
-                this.setState({redirect: ''})
+                this.setState({ redirect: '' })
             })
     }
 
     createUI() {
         return this.state.alternativa.map((el, i) =>
             <div key={i} className='row'>
-                <input
-                    ref="enunciado"
-                    type="text"
-                    placeholder="Pergunta.." />
                 <Input
                     value={el || ''}
                     icon={enume[i]}
@@ -82,21 +79,20 @@ class NovoQuestionario extends Component {
             <div className="container">
                 <h2>Fazer questionario</h2>
                 <form onSubmit={this.handleSubmit}>
+
+                    {qtdAlternativas > 0 &&
+                        <input ref="enunciado" type="text" placeholder="Pergunta.."/>
+                    }
+                    
                     {this.createUI()}
 
-                    <Button floating large className='red'
-                        onClick={(qtdAlternativas <= 6) ? this.addClick.bind(this) : alert('Atingido o limite de alternativas!')}
-                        waves='light'
-                        icon='add'
-                    />
-                    { qtdAlternativas > 0 &&
-                        <Button large className='red'
-                            onClick={this.saveQuestionario}
-                            waves='light'
-                            icon='save'
-                        />
+                    {qtdAlternativas < 5 &&
+                        <Button floating large className='red' onClick={this.addClick.bind(this)} waves='light' icon='add' />
                     }
-
+                    {qtdAlternativas > 0 &&
+                        <Button large className='blue' onClick={this.saveQuestionario} waves='light' icon='save'/>
+                    }
+                    
                 </form>
             </div>
         )

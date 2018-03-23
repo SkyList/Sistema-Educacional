@@ -17,17 +17,17 @@ class ListaPerguntas extends Component {
     renderPerguntas(item) {
         return (
             <Row>
-            <CardPanel className='left'>
-                <div >
-                    <label className='center' ><h3>{item.enunciado}</h3></label>
-                    <form action="#" >
-                        {item.alternativas.map((alternativa) => (
-                            <Input name='group1' type='radio' value={alternativa} label={alternativa} />
-                        )
-                        )}
-                    </form>
-                </div>
-            </CardPanel>
+                <CardPanel className='right'>
+                    <div >
+                        <label><h5>{item.enunciado}</h5></label>
+                        <form action="#" >
+                            {item.alternativas.map((alternativa) => (
+                                    <Input name='group1' type='radio' value={alternativa} label={alternativa} />
+                                )
+                            )}
+                        </form>
+                    </div>
+                </CardPanel>
             </Row>
         )
     }
@@ -38,13 +38,12 @@ class ListaPerguntas extends Component {
         })
     }
 
-
-
     render() {
         return (
             <div className='container'>
                 {this.state.perguntas.map(this.renderPerguntas)}
                 <br />
+                {console.log(this.state.perguntas)}
             </div>
         )
     }

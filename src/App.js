@@ -22,9 +22,9 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <nav>
+          <nav >
             <div className="nav-wrapper">
-              <a href="#" className="brand-logo center">Logo</a>
+              <a href="#" className="brand-logo center"><i class="material-icons">question_answer</i></a>
               <ul id="nav-mobile" className="left hide-on-med-and-down">
                 <li><Link to="/">Lista de questões</Link></li>
                 <li><Link to="/new">Fazer questionario</Link></li>

@@ -1,0 +1,37 @@
+{
+  "perguntas": [
+    {
+      "id": 0,
+      "enunciado": "O primeiro",
+      "alternativas": [
+        ""
+      ]
+    },
+    {
+      "enunciado": "Fred",
+      "alternativas": [
+        "Flintstone",
+        "sadasd",
+        "sadsad"
+      ],
+      "id": 1
+    },
+    {
+      "enunciado": "Fred",
+      "alternativas": [
+        "Chupa",
+        "Meu",
+        "Pau",
+        "Anderson kkkkk"
+      ],
+      "id": 2
+    },
+    {
+      "enunciado": [],
+      "alternativas": [
+        "a"
+      ],
+      "id": 3
+    }
+  ]
+}
